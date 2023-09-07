@@ -1,3 +1,7 @@
+## 0.2.0
+
+- stored DateTime does not loose timezone
+
 ## 0.1.3
 
 - fix analyzer issue
