@@ -9,30 +9,30 @@ class KeyValue {
   @Index(unique: true, replace: true)
   late String key;
 
-  String? _stringValue;
-  int? _intValue;
-  double? _doubleValue;
-  bool? _boolValue;
-  String? _dateTimeValue;
+  String? stringValue;
+  int? intValue;
+  double? doubleValue;
+  bool? boolValue;
+  String? dateTimeValue;
 }
 
 extension KeyValueX on KeyValue {
   set value(dynamic value) {
     switch (value.runtimeType) {
       case String:
-        _stringValue = value;
+        stringValue = value;
         break;
       case int:
-        _intValue = value;
+        intValue = value;
         break;
       case double:
-        _doubleValue = value;
+        doubleValue = value;
         break;
       case bool:
-        _boolValue = value;
+        boolValue = value;
         break;
       case DateTime:
-        _dateTimeValue = value.toIso8601String();
+        dateTimeValue = value.toIso8601String();
         break;
       default:
         throw UnsupportedError('${value.runtimeType} is not supported');
@@ -40,10 +40,10 @@ extension KeyValueX on KeyValue {
   }
 
   dynamic get value {
-    return _stringValue ??
-        _intValue ??
-        _doubleValue ??
-        _boolValue ??
-        (_dateTimeValue != null ? DateTime.parse(_dateTimeValue!) : null);
+    return stringValue ??
+        intValue ??
+        doubleValue ??
+        boolValue ??
+        (dateTimeValue != null ? DateTime.parse(dateTimeValue!) : null);
   }
 }
