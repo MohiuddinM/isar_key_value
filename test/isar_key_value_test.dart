@@ -64,4 +64,15 @@ void main() {
       throwsUnsupportedError,
     );
   });
+
+  test('DateTime keeps timezone info', () async {
+    final now = DateTime.now();
+    final nowUtc = DateTime.now().toUtc();
+
+    await isar.set('local', now);
+    await isar.set('utc', nowUtc);
+
+    expect(await isar.get('local'), now);
+    expect(await isar.get('utc'), nowUtc);
+  });
 }
