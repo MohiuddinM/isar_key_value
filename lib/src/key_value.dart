@@ -18,18 +18,24 @@ class KeyValue {
 
 extension KeyValueX on KeyValue {
   set value(dynamic value) {
-    if (value is String) {
-      _stringValue = value;
-    } else if (value is int) {
-      _intValue = value;
-    } else if (value is double) {
-      _doubleValue = value;
-    } else if (value is bool) {
-      _boolValue = value;
-    } else if (value is DateTime) {
-      _dateTimeValue = value.toIso8601String();
-    } else {
-      throw UnsupportedError('${value.runtimeType} is not supported');
+    switch (value.runtimeType) {
+      case String:
+        _stringValue = value;
+        break;
+      case int:
+        _intValue = value;
+        break;
+      case double:
+        _doubleValue = value;
+        break;
+      case bool:
+        _boolValue = value;
+        break;
+      case DateTime:
+        _dateTimeValue = value.toIso8601String();
+        break;
+      default:
+        throw UnsupportedError('${value.runtimeType} is not supported');
     }
   }
 
