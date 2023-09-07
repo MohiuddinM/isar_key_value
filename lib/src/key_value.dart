@@ -9,31 +9,35 @@ class KeyValue {
   @Index(unique: true, replace: true)
   late String key;
 
-  String? stringValue;
-  int? intValue;
-  double? doubleValue;
-  bool? boolValue;
-  DateTime? dateTimeValue;
+  String? _stringValue;
+  int? _intValue;
+  double? _doubleValue;
+  bool? _boolValue;
+  String? _dateTimeValue;
 }
 
 extension KeyValueX on KeyValue {
   set value(dynamic value) {
     if (value is String) {
-      stringValue = value;
+      _stringValue = value;
     } else if (value is int) {
-      intValue = value;
+      _intValue = value;
     } else if (value is double) {
-      doubleValue = value;
+      _doubleValue = value;
     } else if (value is bool) {
-      boolValue = value;
+      _boolValue = value;
     } else if (value is DateTime) {
-      dateTimeValue = value;
+      _dateTimeValue = value.toIso8601String();
     } else {
       throw UnsupportedError('${value.runtimeType} is not supported');
     }
   }
 
   dynamic get value {
-    return stringValue ?? intValue ?? doubleValue ?? boolValue ?? dateTimeValue;
+    return _stringValue ??
+        _intValue ??
+        _doubleValue ??
+        _boolValue ??
+        (_dateTimeValue != null ? DateTime.parse(_dateTimeValue!) : null);
   }
 }
