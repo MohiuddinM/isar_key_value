@@ -19,19 +19,19 @@ class KeyValue {
 extension KeyValueX on KeyValue {
   set value(dynamic value) {
     switch (value.runtimeType) {
-      case String:
+      case const (String):
         stringValue = value;
         break;
-      case int:
+      case const (int):
         intValue = value;
         break;
-      case double:
+      case const (double):
         doubleValue = value;
         break;
-      case bool:
+      case const (bool):
         boolValue = value;
         break;
-      case DateTime:
+      case const (DateTime):
         dateTimeValue = value.toIso8601String();
         break;
       default:
