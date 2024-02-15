@@ -1,3 +1,7 @@
+## 0.2.1
+
+- update lints
+
 ## 0.2.0
 
 - stored DateTime does not loose timezone

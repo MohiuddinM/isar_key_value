@@ -1,6 +1,6 @@
 name: isar_key_value
 description: A super fast key value store built on top of the isar database.
-version: 0.2.0
+version: 0.2.1
 repository: https://github.com/MohiuddinM/isar_key_value
 
 environment:
